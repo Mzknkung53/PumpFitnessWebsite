@@ -1,0 +1,757 @@
+{
+  "_note": "Bilingual copy and branch data for the Pump Fitness website. Values in [BRACKETS] are placeholders still to be filled. The two branches are in DIFFERENT locations: chang-phuak = north of the Old City, chiang-mai-gate = south of the Old City.",
+  "branches": [
+    {
+      "id": "chang-phuak",
+      "legacyId": "b1",
+      "short": "Pump Fitness",
+      "name": "Pump Fitness",
+      "fullName": "PUMP FITNESS AND GYM CHIANG MAI",
+      "tag": {
+        "en": "Branch 1 · The original",
+        "th": "สาขา 1 · สาขาแรก"
+      },
+      "area": {
+        "en": "Chang Phuak Gate · North",
+        "th": "ประตูช้างเผือก · ฝั่งเหนือ"
+      },
+      "blurb": {
+        "en": "The original Pump: compact, focused and well located, with everything you need for a full session.",
+        "th": "สาขาแรกของ Pump กะทัดรัด ทำเลดี อุปกรณ์ครบสำหรับการเล่นทั้งเซสชัน"
+      },
+      "highlights": {
+        "en": [
+          "Dumbbells to 50 kg",
+          "Showers available",
+          "Near Chang Phuak Gate"
+        ],
+        "th": [
+          "ดัมเบลถึง 50 กก.",
+          "มีห้องอาบน้ำ",
+          "ใกล้ประตูช้างเผือก"
+        ]
+      },
+      "address": {
+        "en": "Chang Phuak Residence, 25/1 Chang Phuak Rd, Chang Phuak, Mueang Chiang Mai 50200",
+        "th": "Chang Phuak Residence 25/1 ถนนช้างเผือก ต.ช้างเผือก อ.เมืองเชียงใหม่ 50200"
+      },
+      "phone": "086 923 9903",
+      "schedule": {
+        "_format": "index 0 = Sunday ... 6 = Saturday; [openHour, closeHour] in Asia/Bangkok",
+        "days": [
+          [
+            12,
+            21
+          ],
+          [
+            8,
+            22
+          ],
+          [
+            8,
+            22
+          ],
+          [
+            8,
+            22
+          ],
+          [
+            8,
+            22
+          ],
+          [
+            8,
+            22
+          ],
+          [
+            9,
+            22
+          ]
+        ]
+      },
+      "hours": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "en": "Mon–Fri",
+          "th": "จันทร์–ศุกร์",
+          "time": "08:00–22:00"
+        },
+        {
+          "days": [
+            6
+          ],
+          "en": "Saturday",
+          "th": "เสาร์",
+          "time": "09:00–22:00"
+        },
+        {
+          "days": [
+            0
+          ],
+          "en": "Sunday",
+          "th": "อาทิตย์",
+          "time": "12:00–21:00"
+        }
+      ],
+      "prices": {
+        "currency": "THB",
+        "day": 100,
+        "week": 400,
+        "month": 1000,
+        "months3": 2500,
+        "months6": 4500,
+        "year": null,
+        "_source": "Front-desk price sign, rates from 1 Jan 2024. Yearly not offered at this branch."
+      },
+      "mapUrl": "https://share.google/WjQDXTN4nGcEUwX2m",
+      "photos": [
+        "Main training floor",
+        "Free weights",
+        "Entrance"
+      ]
+    },
+    {
+      "id": "chiang-mai-gate",
+      "legacyId": "b2",
+      "short": "Pump 2.0",
+      "name": "Pump Fitness 2.0",
+      "fullName": "PUMP FITNESS 2.0 · NEAR CHIANG MAI GATE",
+      "tag": {
+        "en": "Branch 2 · 5 floors",
+        "th": "สาขา 2 · 5 ชั้น"
+      },
+      "area": {
+        "en": "Chiang Mai Gate · South",
+        "th": "ประตูเชียงใหม่ · ฝั่งใต้"
+      },
+      "blurb": {
+        "en": "Our flagship: five floors of brand-new machines, air-conditioned throughout. Opened October 2024.",
+        "th": "สาขาใหญ่ 5 ชั้น เครื่องใหม่ทั้งหมด แอร์เย็นทุกชั้น เปิดเมื่อตุลาคม 2567"
+      },
+      "highlights": {
+        "en": [
+          "Five floors",
+          "Nexus, Realleader, Technogym",
+          "Air-con, showers, changing rooms"
+        ],
+        "th": [
+          "5 ชั้นเต็ม",
+          "เครื่อง Nexus, Realleader, Technogym",
+          "แอร์ ห้องอาบน้ำ ห้องเปลี่ยนเสื้อผ้า"
+        ]
+      },
+      "address": {
+        "en": "89/1-3 Bumrung Buri Rd, Phrasing, Mueang Chiang Mai 50200",
+        "th": "89 89/1-3 ถนนบำรุงบุรี ต.พระสิงห์ อ.เมืองเชียงใหม่ 50200"
+      },
+      "phone": "086 923 9903",
+      "coordinates": {
+        "lat": 18.78154244,
+        "lng": 98.98595508
+      },
+      "schedule": {
+        "_format": "index 0 = Sunday ... 6 = Saturday; [openHour, closeHour] in Asia/Bangkok",
+        "days": [
+          [
+            9,
+            21
+          ],
+          [
+            7,
+            22
+          ],
+          [
+            7,
+            22
+          ],
+          [
+            7,
+            22
+          ],
+          [
+            7,
+            22
+          ],
+          [
+            7,
+            22
+          ],
+          [
+            9,
+            21
+          ]
+        ]
+      },
+      "hours": [
+        {
+          "days": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "en": "Mon–Fri",
+          "th": "จันทร์–ศุกร์",
+          "time": "07:00–22:00"
+        },
+        {
+          "days": [
+            0,
+            6
+          ],
+          "en": "Sat–Sun",
+          "th": "เสาร์–อาทิตย์",
+          "time": "09:00–21:00"
+        }
+      ],
+      "prices": {
+        "currency": "THB",
+        "day": 150,
+        "week": 550,
+        "month": 1300,
+        "months3": 3500,
+        "months6": 6500,
+        "year": 9900,
+        "_source": "Front-desk price sign."
+      },
+      "mapUrl": "https://share.google/OpwPErSQ9vyTItssV",
+      "photos": [
+        "Four-floor overview",
+        "Leg machine floor",
+        "Changing rooms"
+      ]
+    }
+  ],
+  "status": {
+    "openNow": {
+      "en": "Open now · until {time}",
+      "th": "เปิดอยู่ · ถึง {time} น."
+    },
+    "closed": {
+      "en": "Closed · opens {time}",
+      "th": "ปิดแล้ว · เปิด {time} น."
+    },
+    "openShort": {
+      "en": "Open now",
+      "th": "เปิดอยู่"
+    },
+    "closedShort": {
+      "en": "Closed",
+      "th": "ปิดอยู่"
+    },
+    "today": {
+      "en": "today",
+      "th": "วันนี้"
+    }
+  },
+  "copy": {
+    "brandSub": {
+      "en": "Chiang Mai\n2 branches",
+      "th": "เชียงใหม่\n2 สาขา"
+    },
+    "nav": {
+      "branches": {
+        "en": "Branches",
+        "th": "สาขา"
+      },
+      "prices": {
+        "en": "Prices",
+        "th": "ราคา"
+      },
+      "equipment": {
+        "en": "Equipment",
+        "th": "อุปกรณ์"
+      },
+      "faq": {
+        "en": "FAQ",
+        "th": "คำถาม"
+      },
+      "cta": {
+        "en": "Get a day pass",
+        "th": "ซื้อ Day Pass"
+      }
+    },
+    "hero": {
+      "eyebrow": {
+        "en": "Chiang Mai Old City · 2 branches",
+        "th": "เมืองเก่าเชียงใหม่ · 2 สาขา"
+      },
+      "title": {
+        "en": "Your gym, right by the",
+        "th": "ยิมของคุณ"
+      },
+      "titleAccent": {
+        "en": "Old City South Gate.",
+        "th": "ใกล้ประตูเมืองเก่า"
+      },
+      "sub": {
+        "en": "Two well-equipped strength gyms near Chang Phuak Gate and Chiang Mai Gate. No membership needed — grab a day pass and train.",
+        "th": "ยิมเวทเทรนนิ่ง 2 สาขา ใกล้ประตูช้างเผือกและประตูเชียงใหม่ ไม่ต้องสมัครสมาชิก ซื้อ Day Pass แล้วเข้าเล่นได้เลย"
+      },
+      "cta1": {
+        "en": "Find a branch",
+        "th": "เลือกสาขา"
+      },
+      "cta2": {
+        "en": "See prices",
+        "th": "ดูราคา"
+      },
+      "floatDay": {
+        "en": "Day pass from",
+        "th": "Day pass เริ่มต้น"
+      },
+      "floatDayValue": "฿100",
+      "floatFloors": {
+        "en": "floors at\nPump 2.0",
+        "th": "ชั้น ที่\nPump 2.0"
+      },
+      "floatFloorsValue": "5"
+    },
+    "marquee": [
+      "Pendulum squat",
+      "Hack squat",
+      "Belt squat",
+      "V-squat",
+      "Leg press",
+      "Glute drive",
+      "Smith machine",
+      "Deadlift platforms",
+      "Pec deck",
+      "Cable crossover",
+      "Incline chest press",
+      "Lat pulldown",
+      "Seated row",
+      "Rear delt machine",
+      "Preacher curl",
+      "Stair climber"
+    ],
+    "branches": {
+      "eyebrow": {
+        "en": "Branches",
+        "th": "สาขา"
+      },
+      "title": {
+        "en": "Two gyms, one Old City.",
+        "th": "2 ยิม ในเมืองเก่า"
+      },
+      "sub": {
+        "en": "Tap a branch to see hours, prices and directions. Status updates live, Chiang Mai time.",
+        "th": "แตะเลือกสาขาเพื่อดูเวลาเปิด ราคา และเส้นทาง สถานะเปิด-ปิดอัปเดตตามเวลาเชียงใหม่"
+      },
+      "hours": {
+        "en": "Opening hours",
+        "th": "เวลาเปิด"
+      },
+      "address": {
+        "en": "Address",
+        "th": "ที่อยู่"
+      },
+      "phone": {
+        "en": "Phone",
+        "th": "โทร"
+      },
+      "perDay": {
+        "en": "day pass",
+        "th": "รายวัน"
+      },
+      "perMonth": {
+        "en": "/ month",
+        "th": "/ เดือน"
+      },
+      "maps": {
+        "en": "Open in Google Maps",
+        "th": "เปิดใน Google Maps"
+      },
+      "reviews": {
+        "en": "Reviews",
+        "th": "รีวิว"
+      }
+    },
+    "passes": {
+      "eyebrow": {
+        "en": "Prices",
+        "th": "ราคา"
+      },
+      "title": {
+        "en": "Simple prices. No contract.",
+        "th": "ราคาง่ายๆ ไม่มีสัญญา"
+      },
+      "sub": {
+        "en": "From a single workout to a full year. Buy at the front desk and train the same day.",
+        "th": "ตั้งแต่รายครั้งถึงรายปี ซื้อที่เคาน์เตอร์ แล้วเข้าเล่นได้ทันที"
+      },
+      "badgeBig": {
+        "en": "5 floors",
+        "th": "5 ชั้น"
+      },
+      "visit": {
+        "en": "Get directions",
+        "th": "ดูเส้นทาง"
+      },
+      "tabs": [
+        {
+          "id": "day",
+          "months": 0,
+          "label": {
+            "en": "Day",
+            "th": "รายวัน"
+          },
+          "unit": {
+            "en": "/ visit",
+            "th": "/ ครั้ง"
+          },
+          "note": {
+            "en": "Single workout — best for travellers passing through.",
+            "th": "เล่นครั้งเดียว เหมาะกับนักท่องเที่ยวที่แวะมาเล่น"
+          }
+        },
+        {
+          "id": "week",
+          "months": 0,
+          "label": {
+            "en": "1 week",
+            "th": "1 สัปดาห์"
+          },
+          "unit": {
+            "en": "/ week",
+            "th": "/ สัปดาห์"
+          },
+          "note": {
+            "en": "For a short stay in Chiang Mai.",
+            "th": "สำหรับคนพักเชียงใหม่ระยะสั้น"
+          }
+        },
+        {
+          "id": "month",
+          "months": 1,
+          "label": {
+            "en": "1 month",
+            "th": "1 เดือน"
+          },
+          "unit": {
+            "en": "/ month",
+            "th": "/ เดือน"
+          },
+          "note": {
+            "en": "For digital nomads and locals.",
+            "th": "สำหรับ Digital Nomad และคนในพื้นที่"
+          }
+        },
+        {
+          "id": "months3",
+          "months": 3,
+          "label": {
+            "en": "3 months",
+            "th": "3 เดือน"
+          },
+          "unit": {
+            "en": "/ 3 months",
+            "th": "/ 3 เดือน"
+          },
+          "note": {
+            "en": "Better value for a longer stay.",
+            "th": "คุ้มกว่าสำหรับคนอยู่ยาว"
+          }
+        },
+        {
+          "id": "months6",
+          "months": 6,
+          "label": {
+            "en": "6 months",
+            "th": "6 เดือน"
+          },
+          "unit": {
+            "en": "/ 6 months",
+            "th": "/ 6 เดือน"
+          },
+          "note": {
+            "en": "For long-stay nomads and locals.",
+            "th": "สำหรับคนอยู่เชียงใหม่ระยะยาว"
+          }
+        },
+        {
+          "id": "year",
+          "months": 12,
+          "label": {
+            "en": "1 year",
+            "th": "1 ปี"
+          },
+          "unit": {
+            "en": "/ year",
+            "th": "/ ปี"
+          },
+          "note": {
+            "en": "Yearly membership — Pump 2.0 only.",
+            "th": "สมาชิกรายปี — เฉพาะ Pump 2.0"
+          }
+        }
+      ],
+      "perMonthEquivalent": {
+        "en": "≈ {price} / month",
+        "th": "เฉลี่ย {price} / เดือน",
+        "_rule": "show only when months > 1; price = total / months"
+      },
+      "notOffered": {
+        "en": "Not offered",
+        "th": "ไม่มีแพ็กเกจนี้"
+      },
+      "notOfferedSub": {
+        "en": "Ask at the front desk",
+        "th": "สอบถามที่เคาน์เตอร์"
+      },
+      "personalTraining": {
+        "eyebrow": {
+          "en": "Personal training",
+          "th": "เทรนเนอร์ส่วนตัว"
+        },
+        "title": {
+          "en": "Train with a coach",
+          "th": "เทรนกับโค้ช"
+        },
+        "sub": {
+          "en": "Same price at both branches.",
+          "th": "ราคาเดียวกันทั้ง 2 สาขา"
+        },
+        "perSession": {
+          "en": "{price} / session",
+          "th": "{price} / ครั้ง"
+        },
+        "single": {
+          "en": "Try a session",
+          "th": "ลองเทรนก่อน"
+        }
+      }
+    },
+    "equipment": {
+      "eyebrow": {
+        "en": "Equipment",
+        "th": "อุปกรณ์"
+      },
+      "title": {
+        "en": "Serious kit, friendly floor.",
+        "th": "เครื่องจัดเต็ม บรรยากาศเป็นกันเอง"
+      },
+      "sub": {
+        "en": "Pump 2.0 has five floors of new machines from Nexus, Realleader and Technogym. The original Pump covers every basic, with dumbbells up to 50 kg.",
+        "th": "Pump 2.0 มี 5 ชั้น เครื่องใหม่จาก Nexus, Realleader และ Technogym ส่วนสาขาแรกมีอุปกรณ์พื้นฐานครบ ดัมเบลถึง 50 กก."
+      },
+      "features": [
+        {
+          "icon": "air",
+          "title": {
+            "en": "Air-conditioned",
+            "th": "แอร์เย็นสบาย"
+          },
+          "desc": {
+            "en": "Cool floors at Pump 2.0",
+            "th": "ทุกชั้นที่ Pump 2.0"
+          }
+        },
+        {
+          "icon": "drop",
+          "title": {
+            "en": "Showers and changing rooms",
+            "th": "ห้องอาบน้ำ ห้องเปลี่ยนเสื้อผ้า"
+          },
+          "desc": {
+            "en": "At both branches",
+            "th": "ทั้ง 2 สาขา"
+          }
+        },
+        {
+          "icon": "dumbbell",
+          "title": {
+            "en": "Dumbbells to 50 kg",
+            "th": "ดัมเบลถึง 50 กก."
+          },
+          "desc": {
+            "en": "At both branches",
+            "th": "ทั้ง 2 สาขา"
+          }
+        }
+      ]
+    },
+    "gallery": {
+      "eyebrow": {
+        "en": "Gallery",
+        "th": "บรรยากาศ"
+      },
+      "title": {
+        "en": "Take a look inside",
+        "th": "ส่องบรรยากาศในยิม"
+      },
+      "instagram": "[@YOUR_HANDLE]",
+      "items": [
+        {
+          "type": "photo",
+          "label": "Exterior, Chiang Mai Gate"
+        },
+        {
+          "type": "video",
+          "label": "Reel: pendulum squat"
+        },
+        {
+          "type": "photo",
+          "label": "Dumbbell rack to 50 kg"
+        },
+        {
+          "type": "photo",
+          "label": "Exterior, Chang Phuak Gate"
+        },
+        {
+          "type": "photo",
+          "label": "Cardio deck"
+        },
+        {
+          "type": "video",
+          "label": "Reel: members training"
+        }
+      ]
+    },
+    "reviews": {
+      "eyebrow": {
+        "en": "Reviews",
+        "th": "รีวิว"
+      },
+      "title": {
+        "en": "What travel guides say",
+        "th": "เว็บไกด์ท่องเที่ยวว่าไง"
+      },
+      "items": [
+        {
+          "source": "CityGlide · Best gyms in Chiang Mai",
+          "url": "https://www.cityglide.co.th/blog/best-gyms-chiang-mai",
+          "kind": "paraphrase",
+          "text": {
+            "en": "The pick if you want the most space and the newest gear — arguably the most complete strength selection in the city.",
+            "th": "ถ้าอยากได้พื้นที่กว้างและเครื่องใหม่ ต้องที่นี่ — อาจเป็นยิมที่มีเครื่องเวทครบที่สุดในเมือง"
+          }
+        },
+        {
+          "source": "New Asia Living · Best gyms for travelers",
+          "url": "https://newasialiving.com/best-gyms-in-chiang-mai-for-travelers-including-prices/",
+          "kind": "paraphrase",
+          "text": {
+            "en": "Rated best value for bodybuilding: spacious, clean, great changing rooms, and day passes that are easy for visitors.",
+            "th": "ยกให้เป็นยิมสายเพาะกายที่คุ้มที่สุด กว้าง สะอาด ห้องเปลี่ยนเสื้อผ้าดี และซื้อ Day Pass ง่าย"
+          }
+        },
+        {
+          "source": "Google · 4.8–4.9★ (2,200+ reviews across both branches)",
+          "kind": "summary",
+          "text": {
+            "en": "Pump Fitness (Chang Phuak) 4.8★ · 793 reviews. Pump 2.0 (Chiang Mai Gate) 4.9★ · 1,494 reviews.",
+            "th": "Pump Fitness (ช้างเผือก) 4.8★ · 793 รีวิว · Pump 2.0 (ประตูเชียงใหม่) 4.9★ · 1,494 รีวิว"
+          }
+        }
+      ]
+    },
+    "faq": {
+      "eyebrow": {
+        "en": "FAQ",
+        "th": "คำถามที่พบบ่อย"
+      },
+      "title": {
+        "en": "Good to know",
+        "th": "รู้ไว้ก่อนมา"
+      },
+      "items": [
+        {
+          "q": {
+            "en": "Do I need a membership?",
+            "th": "ต้องสมัครสมาชิกไหม?"
+          },
+          "a": {
+            "en": "No. Buy a single workout (from ฿100), a week, a month or longer at the front desk and start training right away.",
+            "th": "ไม่ต้องครับ ซื้อแบบรายครั้ง (เริ่ม ฿100) รายสัปดาห์ รายเดือน หรือนานกว่านั้นได้ที่เคาน์เตอร์ แล้วเข้าเล่นได้ทันที"
+          }
+        },
+        {
+          "q": {
+            "en": "Which branch should I choose?",
+            "th": "ควรเลือกสาขาไหนดี?"
+          },
+          "a": {
+            "en": "Pump 2.0 near Chiang Mai Gate is bigger, with five floors, air-con and showers. The original near Chang Phuak Gate is compact and cheaper per day — and both branches have showers. Pick the one closer to where you stay.",
+            "th": "Pump 2.0 ใกล้ประตูเชียงใหม่ใหญ่กว่า มี 5 ชั้น แอร์ และห้องอาบน้ำ ส่วนสาขาแรกใกล้ประตูช้างเผือกกะทัดรัดและราคารายวันถูกกว่า — ทั้ง 2 สาขามีห้องอาบน้ำ เลือกสาขาที่ใกล้ที่พักได้เลย"
+          }
+        },
+        {
+          "q": {
+            "en": "Can I shower after training?",
+            "th": "อาบน้ำหลังเล่นได้ไหม?"
+          },
+          "a": {
+            "en": "Yes. Both branches have showers, so you can head straight back out to explore the city.",
+            "th": "ได้ครับ ทั้ง 2 สาขามีห้องอาบน้ำ เล่นเสร็จไปเที่ยวต่อได้เลย"
+          }
+        },
+        {
+          "q": {
+            "en": "What are the opening hours?",
+            "th": "เปิดกี่โมง?"
+          },
+          "a": {
+            "en": "Pump Fitness (Chang Phuak Gate): Mon–Fri 08:00–22:00, Sat 09:00–22:00, Sun 12:00–21:00. Pump 2.0 (Chiang Mai Gate): Mon–Fri 07:00–22:00, Sat–Sun 09:00–21:00.",
+            "th": "Pump Fitness (ประตูช้างเผือก): จ.–ศ. 08:00–22:00, ส. 09:00–22:00, อา. 12:00–21:00 · Pump 2.0 (ประตูเชียงใหม่): จ.–ศ. 07:00–22:00, ส.–อา. 09:00–21:00"
+          }
+        }
+      ]
+    },
+    "cta": {
+      "title": {
+        "en": "See you on the gym floor",
+        "th": "แล้วเจอกันที่ยิม"
+      },
+      "sub": {
+        "en": "Pick the branch closest to where you stay.",
+        "th": "เลือกสาขาที่ใกล้ที่พักของคุณได้เลย"
+      }
+    },
+    "footer": {
+      "tagline": {
+        "en": "Strength gyms in Chiang Mai's Old City. Locals, travellers and nomads welcome.",
+        "th": "ยิมเวทเทรนนิ่งในเมืองเก่าเชียงใหม่ ยินดีต้อนรับทั้งคนในพื้นที่และนักท่องเที่ยว"
+      },
+      "follow": {
+        "en": "Follow us",
+        "th": "ติดตามเรา"
+      },
+      "social": {
+        "facebook": "[LINK]",
+        "instagram": "[LINK]",
+        "line": "[ID]"
+      },
+      "backTop": {
+        "en": "Back to top",
+        "th": "กลับขึ้นด้านบน"
+      },
+      "copyright": "© 2026 Pump Fitness Chiang Mai"
+    }
+  },
+  "personalTraining": {
+    "currency": "THB",
+    "sameAtBothBranches": true,
+    "packages": [
+      {
+        "sessions": 1,
+        "price": 580
+      },
+      {
+        "sessions": 10,
+        "price": 5000
+      },
+      {
+        "sessions": 20,
+        "price": 9000
+      }
+    ]
+  }
+}

@@ -1,0 +1,102 @@
+/* Pump Fitness Chiang Mai — design tokens (see docs/DESIGN.md) */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Anuphan:wght@400;500;600;700&display=swap");
+
+:root {
+  /* Brand — matches the orange in the logo */
+  --accent: #ff5001;
+  --accent-ink: #c23d01;   /* small orange text on light backgrounds (passes 4.5:1) */
+  --accent-soft: #ffe8de;  /* tinted fills: chips, today row, icon tiles */
+  --on-accent: #111111;    /* text/icons on --accent — never white */
+
+  /* Neutrals */
+  --ink: #15161a;
+  --ink-2: #4a4d54;
+  --muted: #5c5f66;
+  --bg: #f6f6f3;
+  --surface: #ffffff;
+  --chip: #ecece7;
+  --line: #e4e4de;
+  --line-2: #dadad3;
+  --dark: #111111;
+
+  /* Status */
+  --status-open: #16a34a;
+  --status-closed: #9a9ca1;
+  --star: #f5b301;
+
+  /* Placeholder media */
+  --ph-from: #e9e9e4;
+  --ph-to: #dcdcd5;
+
+  /* Type */
+  --font: "Plus Jakarta Sans", "Anuphan", system-ui, sans-serif;
+  --fs-body: 17px;
+  --fs-lead: 19px;
+  --fs-h1: clamp(44px, 6.2vw, 80px);
+  --fs-h2: clamp(36px, 4.4vw, 56px);
+  --fs-h3: 32px;
+  --fs-price: 52px;
+  --fs-eyebrow: 14px;
+  --fs-label: 13px;
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: 24px;
+  --section-y: 112px;
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 28px;
+  --radius-xl: 32px;
+  --radius-band: 36px;
+  --radius-pill: 999px;
+
+  /* Elevation & motion */
+  --shadow-hover: 0 22px 44px -22px rgba(21, 22, 26, 0.28);
+  --shadow-float: 0 24px 48px -20px rgba(21, 22, 26, 0.3);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+a { color: var(--accent-ink); }
+a:focus-visible,
+button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 12px; }
+
+.lift { transition: transform 0.35s var(--ease-out), box-shadow 0.35s; }
+.lift:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.btn { transition: transform 0.2s, filter 0.2s, background-color 0.2s; }
+.btn:hover { transform: translateY(-2px); filter: brightness(1.07); }
+.btn:active { transform: translateY(0); }
+.zoom { overflow: hidden; }
+.zoom > .zi { transition: transform 0.7s var(--ease-out); }
+.zoom:hover > .zi { transform: scale(1.05); }
+
+.mq-wrap { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee { display: flex; gap: 12px; width: max-content; animation: mq 45s linear infinite; }
+.mq-wrap:hover .marquee { animation-play-state: paused; }
+
+.rise { animation: rise 0.9s var(--ease-out) both; }
+.float { animation: float 6s ease-in-out infinite; }
+.fade { animation: fade 0.45s ease both; }
+.dot-open { animation: pulse 2s infinite; }
+
+@keyframes mq { to { transform: translateX(-50%); } }
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } }
+@keyframes float { 50% { transform: translateY(-10px); } }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } }
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

@@ -1,0 +1,89 @@
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 56px 0 36px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 28px;
+  font-size: 15px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.logo {
+  height: 104px;
+  width: auto;
+}
+
+.tagline {
+  color: var(--muted);
+  max-width: 260px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.colTitle {
+  font-weight: 700;
+}
+
+.address {
+  color: var(--ink-2);
+}
+
+.mapLink {
+  font-weight: 600;
+  padding: 4px 0;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.mapLink:hover {
+  text-decoration: underline;
+}
+
+.social {
+  color: var(--ink);
+  padding: 4px 0;
+  text-decoration: none;
+}
+
+.social:hover {
+  color: var(--accent-ink);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.backTop {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.backTop:hover {
+  color: var(--ink);
+}

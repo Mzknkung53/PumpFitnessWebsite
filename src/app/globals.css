@@ -1,0 +1,196 @@
+@import "../styles/tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 72px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  color: var(--accent-ink);
+  letter-spacing: 0.02em;
+}
+
+.section-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.btn {
+  transition: transform 0.2s, filter 0.2s, background-color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.07);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--line-2);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.btn-ghost:hover {
+  background: var(--chip);
+}
+
+.lift {
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s;
+}
+
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.zoom {
+  overflow: hidden;
+}
+
+.zoom > .zi {
+  transition: transform 0.7s var(--ease-out);
+}
+
+.zoom:hover > .zi {
+  transform: scale(1.05);
+}
+
+.rise {
+  animation: rise 0.9s var(--ease-out) both;
+}
+
+.d1 {
+  animation-delay: 0.1s;
+}
+
+.d2 {
+  animation-delay: 0.2s;
+}
+
+.d3 {
+  animation-delay: 0.3s;
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float2 {
+  animation: float 7s ease-in-out 1.2s infinite;
+}
+
+.fade {
+  animation: fade 0.45s ease both;
+}
+
+.dot-open {
+  animation: pulse 2s infinite;
+}
+
+.mq-wrap {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.marquee {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: mq 45s linear infinite;
+}
+
+.mq-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
