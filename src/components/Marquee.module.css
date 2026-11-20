@@ -15,6 +15,15 @@
   letter-spacing: -0.01em;
   color: #2a2c31;
   flex: none;
+  transition: color 0.25s;
+}
+
+.item:hover {
+  color: var(--accent-ink);
+}
+
+.item:hover .dot {
+  transform: scale(1.8);
 }
 
 .dot {
@@ -23,4 +32,15 @@
   border-radius: 999px;
   background: var(--accent);
   flex: none;
+  transition: transform 0.3s var(--ease-out);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 14px 0;
+  }
+
+  .item {
+    font-size: 16px;
+  }
 }

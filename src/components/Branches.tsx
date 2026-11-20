@@ -6,6 +6,7 @@ import { useBranchStatuses } from "@/hooks/useOpenStatus";
 import { formatBaht } from "@/lib/format";
 import { bangkokDayOfWeek } from "@/lib/openNow";
 import type { BranchId } from "@/lib/types";
+import { useSlidingIndicator } from "@/hooks/useSlidingIndicator";
 import { MediaPlaceholder } from "./MediaPlaceholder";
 import styles from "./Branches.module.css";
 
@@ -17,23 +18,37 @@ export function Branches() {
   const branch = content.branches.find((b) => b.id === selected)!;
   const today = bangkokDayOfWeek();
   const st = statuses[branch.id];
+  const { listRef, indicatorStyle } = useSlidingIndicator<HTMLDivElement>([
+    selected,
+    lang,
+  ]);
 
   return (
     <section id="branches" className={styles.section}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.header}>
-          <div className={styles.headerCopy}>
+          <div className={styles.headerCopy} data-reveal>
             <span className="eyebrow">{t(copy.eyebrow)}</span>
             <h2 className="section-title">{t(copy.title)}</h2>
           </div>
-          <p className={styles.sub}>{t(copy.sub)}</p>
+          <p className={styles.sub} data-reveal style={{ "--d": 1 } as React.CSSProperties}>
+            {t(copy.sub)}
+          </p>
         </div>
 
         <div
           role="tablist"
           aria-label="Branches"
           className={styles.tablist}
+          ref={listRef}
+          data-reveal
+          style={{ "--d": 2 } as React.CSSProperties}
         >
+          <span
+            className={styles.indicator}
+            style={indicatorStyle}
+            aria-hidden="true"
+          />
           {content.branches.map((item) => {
             const active = item.id === selected;
             const itemSt = statuses[item.id];
@@ -75,7 +90,8 @@ export function Branches() {
         <div
           role="tabpanel"
           key={branch.id}
-          className={`fade ${styles.panel}`}
+          className={styles.panel}
+          data-reveal="fade"
         >
           <div className={styles.gallery}>
             <div className={styles.mainShot}>
@@ -105,8 +121,12 @@ export function Branches() {
             </div>
 
             <div className={styles.highlights}>
-              {branch.highlights[lang].map((h) => (
-                <span key={h} className={styles.highlight}>
+              {branch.highlights[lang].map((h, i) => (
+                <span
+                  key={h}
+                  className={styles.highlight}
+                  style={{ "--i": i } as React.CSSProperties}
+                >
                   <svg
                     width="14"
                     height="14"

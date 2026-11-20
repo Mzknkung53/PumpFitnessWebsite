@@ -12,7 +12,7 @@ export function FAQ() {
   return (
     <section id="faq" className={styles.section}>
       <div className={styles.inner}>
-        <div className={styles.header}>
+        <div className={styles.header} data-reveal>
           <span className="eyebrow">{t(copy.eyebrow)}</span>
           <h2 className="section-title">{t(copy.title)}</h2>
         </div>
@@ -21,10 +21,17 @@ export function FAQ() {
           {copy.items.map((item, index) => {
             const open = openIndex === index;
             return (
-              <div key={item.q.en} className={styles.item}>
+              <div
+                key={item.q.en}
+                className={`${styles.item} ${open ? styles.itemOpen : ""}`}
+                data-reveal
+                style={{ "--d": index + 1 } as React.CSSProperties}
+              >
                 <button
                   type="button"
+                  id={`faq-q-${index}`}
                   aria-expanded={open}
+                  aria-controls={`faq-a-${index}`}
                   className={styles.trigger}
                   onClick={() => setOpenIndex(open ? -1 : index)}
                 >
@@ -45,9 +52,17 @@ export function FAQ() {
                     </svg>
                   </span>
                 </button>
-                {open ? (
-                  <p className={`fade ${styles.answer}`}>{t(item.a)}</p>
-                ) : null}
+                <div
+                  id={`faq-a-${index}`}
+                  role="region"
+                  aria-labelledby={`faq-q-${index}`}
+                  className={styles.panel}
+                  inert={!open}
+                >
+                  <div className={styles.panelInner}>
+                    <p className={styles.answer}>{t(item.a)}</p>
+                  </div>
+                </div>
               </div>
             );
           })}

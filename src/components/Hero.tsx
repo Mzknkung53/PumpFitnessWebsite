@@ -1,17 +1,29 @@
 "use client";
 
+import { Fragment } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useBranchStatuses } from "@/hooks/useOpenStatus";
+import { CountUp } from "./CountUp";
 import { MediaPlaceholder } from "./MediaPlaceholder";
 import styles from "./Hero.module.css";
 
 export function Hero() {
-  const { t, content } = useLanguage();
+  const { t, content, lang } = useLanguage();
   const statuses = useBranchStatuses();
   const hero = content.copy.hero;
+  const titleWords = t(hero.title).split(" ");
+  const dayNumber = Number(hero.floatDayValue.replace(/[^\d.]/g, ""));
+  const dayPrefix = hero.floatDayValue.replace(/[\d.,]/g, "");
+  const floors = Number(hero.floatFloorsValue);
 
   return (
     <section id="top" className={styles.section}>
+      <div className={styles.bg} aria-hidden="true">
+        <span className={`orb ${styles.orbA}`} />
+        <span className={`orb ${styles.orbB}`} />
+        <span className={styles.dots} />
+      </div>
+
       <div className={`container ${styles.grid}`}>
         <div className={styles.copy}>
           <span className={`rise ${styles.eyebrowPill}`}>
@@ -30,9 +42,32 @@ export function Hero() {
             {t(hero.eyebrow)}
           </span>
 
-          <h1 className={`rise d1 ${styles.title}`}>
-            {t(hero.title)}{" "}
-            <span className={styles.titleAccent}>{t(hero.titleAccent)}</span>
+          {/* key={lang} replays the word animation when the language changes */}
+          <h1 key={lang} className={styles.title}>
+            {titleWords.map((word, i) => (
+              <Fragment key={`${word}-${i}`}>
+                <span
+                  className={styles.word}
+                  style={{ animationDelay: `${0.12 + i * 0.07}s` }}
+                >
+                  {word}
+                </span>{" "}
+              </Fragment>
+            ))}
+            <span
+              className={`${styles.word} ${styles.titleAccent}`}
+              style={{ animationDelay: `${0.12 + titleWords.length * 0.07}s` }}
+            >
+              <span className={styles.accentText}>{t(hero.titleAccent)}</span>
+              <svg
+                className={styles.swoosh}
+                viewBox="0 0 300 14"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path d="M3 10 C 60 3, 140 2, 297 7" />
+              </svg>
+            </span>
           </h1>
 
           <p className={`rise d2 ${styles.sub}`}>{t(hero.sub)}</p>
@@ -82,7 +117,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className={styles.mediaWrap}>
+        <div className={styles.mediaWrap} data-tilt>
           <div className={styles.heroMedia}>
             <MediaPlaceholder
               label="HERO VIDEO · 15–20s loop, muted autoplay"
@@ -92,15 +127,22 @@ export function Hero() {
             />
           </div>
 
-          <div className={`float ${styles.floatDay}`}>
+          <div className={styles.floatDay}>
+            <span className={styles.floatRing} aria-hidden="true" />
             <span className={styles.floatDayLabel}>{t(hero.floatDay)}</span>
-            <span className={styles.floatDayValue}>{hero.floatDayValue}</span>
+            <CountUp
+              value={dayNumber}
+              format={(n) => `${dayPrefix}${n}`}
+              className={styles.floatDayValue}
+            />
           </div>
 
-          <div className={`float2 ${styles.floatFloors}`}>
-            <span className={styles.floatFloorsNum}>
-              {hero.floatFloorsValue}
-            </span>
+          <div className={styles.floatFloors}>
+            <CountUp
+              value={floors}
+              duration={1200}
+              className={styles.floatFloorsNum}
+            />
             <span className={styles.floatFloorsText}>{t(hero.floatFloors)}</span>
           </div>
         </div>

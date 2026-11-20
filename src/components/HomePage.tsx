@@ -12,6 +12,8 @@ import { Reviews } from "./Reviews";
 import { FAQ } from "./FAQ";
 import { Cta } from "./Cta";
 import { Footer } from "./Footer";
+import { BackToTop } from "./BackToTop";
+import { MotionEffects } from "./MotionEffects";
 
 export function HomePage() {
   return (
@@ -29,6 +31,8 @@ export function HomePage() {
         <Cta />
       </main>
       <Footer />
+      <BackToTop />
+      <MotionEffects />
     </LanguageProvider>
   );
 }

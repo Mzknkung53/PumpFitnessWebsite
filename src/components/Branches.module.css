@@ -1,5 +1,5 @@
 .section {
-  padding: 112px 0 96px;
+  padding: var(--section-y) 0 clamp(64px, 9vw, 96px);
 }
 
 .inner {
@@ -29,6 +29,7 @@
 }
 
 .tablist {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 8px;
@@ -37,8 +38,25 @@
   border-radius: 24px;
 }
 
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 10px 28px -12px rgba(21, 22, 26, 0.25);
+  transition:
+    transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1),
+    width 0.45s var(--ease-out),
+    height 0.45s var(--ease-out),
+    opacity 0.3s;
+  pointer-events: none;
+}
+
 .tab {
   all: unset;
+  position: relative;
+  z-index: 1;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
@@ -52,9 +70,17 @@
   min-height: 44px;
 }
 
-.tabActive {
-  background: var(--surface);
-  box-shadow: 0 8px 24px -12px rgba(21, 22, 26, 0.2);
+.tab:not(.tabActive):hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.tab:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.tabActive .tabName {
+  color: var(--ink);
 }
 
 .tabText {
@@ -114,21 +140,57 @@
   grid-column: 1 / span 2;
   position: relative;
   min-height: 340px;
+  animation: shot-in 0.8s var(--ease-out) 0.05s backwards;
 }
 
 .sideShot {
   position: relative;
   min-height: 190px;
+  animation: shot-in 0.8s var(--ease-out) 0.18s backwards;
+}
+
+.sideShot + .sideShot {
+  animation-delay: 0.28s;
+}
+
+/* Inner pieces wait for the panel to scroll into view, then play (and replay on tab switch). */
+:global(.js) .panel:not([data-inview]) .mainShot,
+:global(.js) .panel:not([data-inview]) .sideShot,
+:global(.js) .panel:not([data-inview]) .info,
+:global(.js) .panel:not([data-inview]) .highlight {
+  animation-play-state: paused;
+}
+
+@keyframes shot-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+}
+
+@keyframes info-in {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
 }
 
 .info {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: clamp(22px, 3.4vw, 32px);
   display: flex;
   flex-direction: column;
   gap: 24px;
+  animation: info-in 0.8s var(--ease-out) 0.15s backwards;
 }
 
 .infoTop {
@@ -166,6 +228,8 @@
   font-weight: 600;
   padding: 8px 14px;
   border-radius: var(--radius-pill);
+  animation: chip-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation-delay: calc(0.45s + var(--i, 0) * 0.07s);
 }
 
 .meta {
@@ -264,7 +328,51 @@
   font-size: 15px;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .mainShot,
+  .sideShot,
+  .info,
+  .highlight {
+    animation-name: reveal-fade;
+  }
+}
+
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-rows: 380px 200px;
+  }
+
+  .mainShot {
+    min-height: 0;
+  }
+
+  .sideShot {
+    min-height: 0;
+  }
+}
+
 @media (max-width: 640px) {
+  .tab {
+    padding: 14px 16px;
+  }
+
+  .tabName {
+    font-size: 19px;
+  }
+
+  .priceBar {
+    padding: 16px;
+  }
+
+  .priceText {
+    width: 100%;
+  }
+
+  .mapsBtn,
+  .reviewsBtn {
+    flex: 1 1 auto;
+  }
+
   .gallery {
     grid-template-rows: 240px 140px;
   }
@@ -275,5 +383,12 @@
 
   .sideShot {
     min-height: 140px;
+  }
+}
+
+/* Local copies of shared keyframes (CSS Modules scope animation names) */
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
   }
 }

@@ -1,5 +1,5 @@
 .section {
-  padding: 104px 0;
+  padding: var(--section-y) 0;
   background: var(--surface);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -26,7 +26,7 @@
 .card {
   background: var(--bg);
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: clamp(22px, 3vw, 28px);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -39,6 +39,7 @@
 }
 
 .source {
+  padding-right: 48px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -47,9 +48,28 @@
   color: var(--muted);
 }
 
+.card::after {
+  content: "\201C";
+  position: absolute;
+  top: 6px;
+  right: 22px;
+  font-size: 84px;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.12;
+  transition: transform 0.5s var(--ease-out), opacity 0.4s;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  transform: translateY(-4px) rotate(-8deg);
+  opacity: 0.3;
+}
+
 .text {
   margin: 0;
-  font-size: 19px;
+  font-size: clamp(17px, 1.6vw, 19px);
   line-height: 1.5;
   font-weight: 500;
 }

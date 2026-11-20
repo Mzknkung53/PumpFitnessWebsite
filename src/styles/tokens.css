@@ -106,16 +106,26 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; bo
   100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .rise,
-  .float,
-  .float2,
-  .fade,
-  .dot-open,
-  .lift,
-  .btn,
-  .zoom > .zi {
-    animation: none !important;
-    transition: none !important;
+/* Responsive tokens — tablet & phone */
+@media (max-width: 1024px) {
+  :root {
+    --fs-h3: 28px;
+    --section-y: 88px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 18px;
+    --fs-body: 16px;
+    --fs-lead: 17px;
+    --fs-h1: clamp(38px, 11vw, 48px);
+    --fs-h2: clamp(30px, 8.6vw, 38px);
+    --fs-h3: 26px;
+    --fs-price: 44px;
+    --section-y: 72px;
+    --radius-lg: 24px;
+    --radius-xl: 26px;
+    --radius-band: 28px;
   }
 }

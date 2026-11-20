@@ -1,5 +1,5 @@
 .section {
-  padding: 40px 0 112px;
+  padding: 40px 0 var(--section-y);
 }
 
 .inner {
@@ -34,7 +34,35 @@
   gap: 12px;
 }
 
+.cell {
+  height: 100%;
+  min-height: 240px;
+}
+
 .item {
   height: 100%;
   min-height: 240px;
+  transition: box-shadow 0.4s;
+}
+
+.cell:hover .item {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Tablet: steady 2-up grid; desktop keeps auto-fit */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-auto-rows: 220px;
+  }
+
+  .cell,
+  .item {
+    min-height: 220px;
+  }
 }

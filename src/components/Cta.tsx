@@ -9,7 +9,9 @@ export function Cta() {
 
   return (
     <section className={styles.section}>
-      <div className={styles.band}>
+      <div className={styles.band} data-reveal="scale">
+        <span className={`orb ${styles.orbA}`} aria-hidden="true" />
+        <span className={`orb ${styles.orbB}`} aria-hidden="true" />
         <div className={styles.copy}>
           <h2 className={styles.title}>
             {t(copy.title)}
@@ -19,9 +21,11 @@ export function Cta() {
         </div>
 
         <div className={styles.links}>
-          {content.branches.map((branch) => (
+          {content.branches.map((branch, i) => (
             <a
               key={branch.id}
+              data-reveal="right"
+              style={{ "--d": i + 2 } as React.CSSProperties}
               href={branch.mapUrl}
               target="_blank"
               rel="noopener noreferrer"

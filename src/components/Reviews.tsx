@@ -10,19 +10,24 @@ export function Reviews() {
   return (
     <section id="reviews" className={styles.section}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.header}>
+        <div className={styles.header} data-reveal>
           <span className="eyebrow">{t(copy.eyebrow)}</span>
           <h2 className="section-title">{t(copy.title)}</h2>
         </div>
 
         <div className={styles.grid}>
-          {copy.items.map((item) => {
+          {copy.items.map((item, index) => {
             const isPlaceholder = item.kind === "placeholder";
             const showStar =
               isPlaceholder ||
               item.kind === "summary" ||
               item.source.toLowerCase().includes("google");
             const className = `lift ${styles.card} ${isPlaceholder ? styles.placeholder : ""}`;
+            const motion = {
+              "data-reveal": "",
+              "data-spotlight": "",
+              style: { "--d": (index % 3) + 1 } as React.CSSProperties,
+            };
             const body = (
               <>
                 <span className={styles.source}>
@@ -55,6 +60,7 @@ export function Reviews() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={className}
+                  {...motion}
                 >
                   {body}
                 </a>
@@ -62,7 +68,7 @@ export function Reviews() {
             }
 
             return (
-              <div key={item.source} className={className}>
+              <div key={item.source} className={className} {...motion}>
                 {body}
               </div>
             );

@@ -4,18 +4,24 @@ import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { formatBaht, getPassPrice } from "@/lib/format";
 import type { PassId } from "@/lib/types";
+import { useSlidingIndicator } from "@/hooks/useSlidingIndicator";
+import { CountUp } from "./CountUp";
 import styles from "./Prices.module.css";
 
 export function Prices() {
-  const { t, content } = useLanguage();
+  const { t, content, lang } = useLanguage();
   const [pass, setPass] = useState<PassId>("day");
   const copy = content.copy.passes;
   const activeTab = copy.tabs.find((tab) => tab.id === pass)!;
+  const { listRef, indicatorStyle } = useSlidingIndicator<HTMLDivElement>([
+    pass,
+    lang,
+  ]);
 
   return (
     <section id="passes" className={styles.section}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.header}>
+        <div className={styles.header} data-reveal>
           <span className="eyebrow">{t(copy.eyebrow)}</span>
           <h2 className="section-title">{t(copy.title)}</h2>
           <p className={styles.sub}>{t(copy.sub)}</p>
@@ -25,7 +31,15 @@ export function Prices() {
           role="tablist"
           aria-label="Pass length"
           className={styles.tabs}
+          ref={listRef}
+          data-reveal
+          style={{ "--d": 1 } as React.CSSProperties}
         >
+          <span
+            className={styles.indicator}
+            style={indicatorStyle}
+            aria-hidden="true"
+          />
           {copy.tabs.map((tab) => {
             const active = tab.id === pass;
             return (
@@ -65,6 +79,9 @@ export function Prices() {
               <div
                 key={branch.id}
                 className={`lift ${styles.card} ${dark ? styles.cardDark : ""}`}
+                data-reveal="scale"
+                data-spotlight
+                style={{ "--d": index + 2 } as React.CSSProperties}
               >
                 <div className={styles.cardHead}>
                   <div>
@@ -77,17 +94,22 @@ export function Prices() {
                 </div>
 
                 {available ? (
-                  <div key={`${branch.id}-${pass}`} className={`fade ${styles.priceBlock}`}>
+                  <div className={styles.priceBlock}>
                     <div className={styles.priceRow}>
-                      <span
+                      <CountUp
+                        value={price!}
+                        format={formatBaht}
+                        duration={700}
                         className={styles.price}
                         style={{ color: dark ? "var(--accent)" : undefined }}
-                      >
-                        {formatBaht(price!)}
-                      </span>
+                      />
                       <span className={styles.unit}>{t(activeTab.unit)}</span>
                     </div>
-                    {eq ? <span className={styles.eq}>{eq}</span> : null}
+                    {eq ? (
+                      <span key={`${pass}-eq`} className={`fade ${styles.eq}`}>
+                        {eq}
+                      </span>
+                    ) : null}
                   </div>
                 ) : (
                   <div key={`${branch.id}-${pass}-na`} className={`fade ${styles.unavailable}`}>
@@ -111,7 +133,7 @@ export function Prices() {
           })}
         </div>
 
-        <div className={styles.pt}>
+        <div className={styles.pt} data-reveal style={{ "--d": 2 } as React.CSSProperties}>
           <div className={styles.ptCopy}>
             <span className="eyebrow">{t(copy.personalTraining.eyebrow)}</span>
             <span className={styles.ptTitle}>
@@ -122,7 +144,7 @@ export function Prices() {
             </span>
           </div>
           <div className={styles.ptGrid}>
-            {content.personalTraining.packages.map((pkg) => {
+            {content.personalTraining.packages.map((pkg, i) => {
               const label =
                 pkg.sessions === 1
                   ? t(copy.personalTraining.single)
@@ -138,6 +160,8 @@ export function Prices() {
                 <div
                   key={pkg.sessions}
                   className={`lift ${styles.ptCard} ${pkg.sessions === 10 ? styles.ptFeatured : ""}`}
+                  data-reveal="scale"
+                  style={{ "--d": i + 3 } as React.CSSProperties}
                 >
                   <span className={styles.ptLabel}>{label}</span>
                   <span className={styles.ptPrice}>{formatBaht(pkg.price)}</span>

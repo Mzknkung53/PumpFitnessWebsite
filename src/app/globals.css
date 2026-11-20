@@ -13,6 +13,7 @@ html {
 body {
   margin: 0;
   min-width: 0;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font);
@@ -34,7 +35,12 @@ a {
 
 section[id],
 footer[id] {
-  scroll-margin-top: 72px;
+  scroll-margin-top: 76px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .container {
@@ -73,6 +79,9 @@ footer[id] {
 }
 
 .btn-primary {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -183,20 +192,239 @@ footer[id] {
   animation-play-state: paused;
 }
 
+/* ── Button shine sweep ───────────────────────────────────── */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.btn-primary:hover::after {
+  transform: translateX(120%);
+}
+
+.btn svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Eyebrow with growing accent dash ───────────────────────── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  flex: none;
+}
+
+.js [data-reveal] .eyebrow::before,
+.js .eyebrow[data-reveal]::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease-out) 0.25s;
+}
+
+.js [data-reveal][data-inview] .eyebrow::before,
+.js .eyebrow[data-reveal][data-inview]::before {
+  transform: scaleX(1);
+}
+
+/* ── Scroll reveal (driven by MotionEffects.tsx) ────────────── */
+/* Hidden only once JS has flagged <html class="js">; revealed via [data-inview]. */
+.js [data-reveal]:not([data-inview]) {
+  opacity: 0;
+}
+
+.js [data-reveal][data-inview] {
+  animation: reveal-up 0.85s var(--ease-out) backwards;
+  animation-delay: calc(var(--d, 0) * 90ms);
+}
+
+.js [data-reveal="left"][data-inview] {
+  animation-name: reveal-left;
+}
+
+.js [data-reveal="right"][data-inview] {
+  animation-name: reveal-right;
+}
+
+.js [data-reveal="scale"][data-inview] {
+  animation-name: reveal-scale;
+}
+
+.js [data-reveal="fade"][data-inview] {
+  animation-name: reveal-fade;
+}
+
+.js [data-reveal="clip"][data-inview] {
+  animation-name: reveal-clip;
+  animation-duration: 1.1s;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+}
+
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-44px);
+  }
+}
+
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(44px);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(18px);
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes reveal-clip {
+  from {
+    opacity: 0;
+    clip-path: inset(12% 12% 12% 12% round var(--radius-xl));
+    transform: scale(1.04);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round var(--radius-xl));
+  }
+}
+
+/* ── Pointer spotlight on cards ([data-spotlight]) ──────────── */
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 80, 1, 0.13),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+[data-spotlight]:hover::before {
+  opacity: 1;
+}
+
+/* ── 3D tilt ([data-tilt]) ──────────────────────────────────── */
+[data-tilt] {
+  transform: perspective(1100px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.5s var(--ease-out);
+  will-change: transform;
+}
+
+/* ── Animated background orbs ───────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: orb-drift 16s ease-in-out infinite alternate;
+}
+
+@keyframes orb-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(40px, -30px, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(-30px, 25px, 0) scale(0.94);
+  }
+}
+
+/* ── Touch devices: no sticky hover lifts ───────────────────── */
+@media (hover: none) {
+  .lift:hover,
+  .btn:hover {
+    transform: none;
+    box-shadow: none;
+    filter: none;
+  }
+
+  .lift:active {
+    transform: scale(0.98);
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .zoom:hover > .zi {
+    transform: none;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+/*
+ * Windows "Animation effects: off" reports prefers-reduced-motion. The site keeps its
+ * entrance animations and marquee (by request) but drops large movement: reveals
+ * become short fades, and floating / drifting / tilting decorations stop.
+ */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .rise,
+  .js [data-reveal][data-inview] {
+    animation-name: reveal-fade !important;
+    animation-duration: 0.5s;
+  }
+
+  .orb,
   .float,
-  .float2,
-  .fade,
-  .dot-open,
-  .lift,
-  .btn,
-  .zoom > .zi {
+  .float2 {
     animation: none !important;
-    transition: none !important;
+  }
+
+  [data-tilt] {
+    transform: none !important;
   }
 }

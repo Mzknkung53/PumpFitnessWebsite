@@ -17,7 +17,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.grid}>
-          <div className={styles.brand}>
+          <div className={styles.brand} data-reveal>
             <Image
               src="/images/logo/pump-fitness-2.0.png"
               alt="Pump Fitness"
@@ -28,8 +28,13 @@ export function Footer() {
             <span className={styles.tagline}>{t(copy.tagline)}</span>
           </div>
 
-          {content.branches.map((branch) => (
-            <div key={branch.id} className={styles.col}>
+          {content.branches.map((branch, i) => (
+            <div
+              key={branch.id}
+              className={styles.col}
+              data-reveal
+              style={{ "--d": i + 1 } as React.CSSProperties}
+            >
               <span className={styles.colTitle}>{branch.name}</span>
               <span className={styles.address}>{t(branch.address)}</span>
               <a
@@ -43,7 +48,7 @@ export function Footer() {
             </div>
           ))}
 
-          <div className={styles.col}>
+          <div className={styles.col} data-reveal style={{ "--d": 3 } as React.CSSProperties}>
             <span className={styles.colTitle}>{t(copy.follow)}</span>
             <a href={socialHref(copy.social.facebook)} className={styles.social}>
               Facebook {copy.social.facebook}

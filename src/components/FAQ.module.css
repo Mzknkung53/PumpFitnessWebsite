@@ -1,5 +1,5 @@
 .section {
-  padding: 112px 0;
+  padding: var(--section-y) 0;
 }
 
 .inner {
@@ -30,6 +30,16 @@
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease-out);
+}
+
+.item:hover {
+  border-color: var(--line-2);
+}
+
+.itemOpen {
+  border-color: rgba(255, 80, 1, 0.35);
+  box-shadow: 0 18px 40px -28px rgba(255, 80, 1, 0.55);
 }
 
 .trigger {
@@ -45,6 +55,17 @@
   font-weight: 700;
   font-size: 18px;
   min-height: 44px;
+  transition: color 0.2s;
+}
+
+.trigger:hover {
+  color: var(--accent-ink);
+}
+
+.trigger:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+  border-radius: var(--radius-md);
 }
 
 .icon {
@@ -57,7 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.25s, transform 0.3s, color 0.25s;
+  transition: background 0.25s, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s;
 }
 
 .iconOpen {
@@ -66,9 +87,50 @@
   transform: rotate(45deg);
 }
 
+/* Smooth height animation without measuring: 0fr → 1fr */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ease-out);
+}
+
+.itemOpen .panel {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+  min-height: 0;
+}
+
 .answer {
   margin: 0;
   padding: 0 24px 24px;
   color: var(--ink-2);
   max-width: 640px;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s, transform 0.45s var(--ease-out);
+}
+
+.itemOpen .answer {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.08s;
+}
+
+@media (max-width: 640px) {
+  .trigger {
+    padding: 18px 18px;
+    font-size: 16px;
+  }
+
+  .answer {
+    padding: 0 18px 20px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
 }

@@ -18,7 +18,7 @@ export function Equipment() {
   return (
     <section id="equipment" className={styles.section}>
       <div className={`container ${styles.grid}`}>
-        <div className={styles.media}>
+        <div className={styles.media} data-reveal="left">
           <MediaPlaceholder
             label="VIDEO · Machine walkthrough, 5 floors (30–60s)"
             radius="xl"
@@ -29,6 +29,7 @@ export function Equipment() {
             className={`btn ${styles.playBtn}`}
             aria-label="Play equipment video"
           >
+            <span className={styles.playPing} aria-hidden="true" />
             <svg
               width="26"
               height="26"
@@ -42,13 +43,25 @@ export function Equipment() {
         </div>
 
         <div className={styles.copy}>
-          <span className="eyebrow">{t(copy.eyebrow)}</span>
-          <h2 className="section-title">{t(copy.title)}</h2>
-          <p className={styles.sub}>{t(copy.sub)}</p>
+          <span className="eyebrow" data-reveal="right">
+            {t(copy.eyebrow)}
+          </span>
+          <h2 className="section-title" data-reveal="right" style={{ "--d": 1 } as React.CSSProperties}>
+            {t(copy.title)}
+          </h2>
+          <p className={styles.sub} data-reveal="right" style={{ "--d": 2 } as React.CSSProperties}>
+            {t(copy.sub)}
+          </p>
 
           <div className={styles.features}>
-            {copy.features.map((feature) => (
-              <div key={feature.icon} className={`lift ${styles.feature}`}>
+            {copy.features.map((feature, i) => (
+              <div
+                key={feature.icon}
+                className={`lift ${styles.feature}`}
+                data-reveal
+                data-spotlight
+                style={{ "--d": i + 3 } as React.CSSProperties}
+              >
                 <div className={styles.iconTile}>
                   <svg
                     width="20"
