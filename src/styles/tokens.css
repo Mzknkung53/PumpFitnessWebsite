@@ -79,7 +79,13 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; bo
 .zoom:hover > .zi { transform: scale(1.05); }
 
 .mq-wrap { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.marquee { display: flex; gap: 12px; width: max-content; animation: mq 75s linear infinite; }
+.marquee {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  will-change: transform;
+  animation: mq 50s linear infinite;
+}
 .mq-wrap:hover .marquee { animation-play-state: paused; }
 
 .rise { animation: rise 0.9s var(--ease-out) both; }
@@ -101,5 +107,15 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; bo
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation: none !important; transition: none !important; }
+  .rise,
+  .float,
+  .float2,
+  .fade,
+  .dot-open,
+  .lift,
+  .btn,
+  .zoom > .zi {
+    animation: none !important;
+    transition: none !important;
+  }
 }

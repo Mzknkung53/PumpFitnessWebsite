@@ -175,7 +175,8 @@ footer[id] {
   display: flex;
   gap: 12px;
   width: max-content;
-  animation: mq 75s linear infinite;
+  will-change: transform;
+  animation: mq 50s linear infinite;
 }
 
 .mq-wrap:hover .marquee {
@@ -187,9 +188,14 @@ footer[id] {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
+  .rise,
+  .float,
+  .float2,
+  .fade,
+  .dot-open,
+  .lift,
+  .btn,
+  .zoom > .zi {
     animation: none !important;
     transition: none !important;
   }
