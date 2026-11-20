@@ -80,6 +80,10 @@
   animation: word-in 0.8s var(--ease-out) backwards;
 }
 
+.titleStatic .word {
+  animation: none;
+}
+
 .titleAccent {
   position: relative;
   display: inline;

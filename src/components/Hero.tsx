@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useBranchStatuses } from "@/hooks/useOpenStatus";
 import { CountUp } from "./CountUp";
@@ -8,13 +8,21 @@ import { MediaPlaceholder } from "./MediaPlaceholder";
 import styles from "./Hero.module.css";
 
 export function Hero() {
-  const { t, content, lang } = useLanguage();
+  const { t, content } = useLanguage();
   const statuses = useBranchStatuses();
   const hero = content.copy.hero;
   const titleWords = t(hero.title).split(" ");
   const dayNumber = Number(hero.floatDayValue.replace(/[^\d.]/g, ""));
   const dayPrefix = hero.floatDayValue.replace(/[\d.,]/g, "");
   const floors = Number(hero.floatFloorsValue);
+
+  // The word-by-word entrance plays on page load only; later language switches
+  // are handled by the page crossfade, so new words must not re-animate.
+  const [introDone, setIntroDone] = useState(false);
+  useEffect(() => {
+    const id = window.setTimeout(() => setIntroDone(true), 1800);
+    return () => window.clearTimeout(id);
+  }, []);
 
   return (
     <section id="top" className={styles.section}>
@@ -42,8 +50,7 @@ export function Hero() {
             {t(hero.eyebrow)}
           </span>
 
-          {/* key={lang} replays the word animation when the language changes */}
-          <h1 key={lang} className={styles.title}>
+          <h1 className={`${styles.title} ${introDone ? styles.titleStatic : ""}`}>
             {titleWords.map((word, i) => (
               <Fragment key={`${word}-${i}`}>
                 <span

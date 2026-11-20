@@ -120,6 +120,7 @@
 
 /* ── Language toggle with sliding thumb ──────────────────── */
 .langToggle {
+  view-transition-name: lang-toggle;
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;

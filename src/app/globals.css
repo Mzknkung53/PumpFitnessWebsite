@@ -380,6 +380,50 @@ footer[id] {
   }
 }
 
+/* ── Language switch crossfade ──────────────────────────────── */
+/* View Transitions: old page fades/blurs out while the new one fades in. */
+::view-transition-old(root) {
+  animation: lang-out 0.28s ease both;
+}
+
+::view-transition-new(root) {
+  animation: lang-in 0.42s var(--ease-out) 0.06s both;
+}
+
+/* The EN/ไทย toggle stays live so its thumb slides instead of crossfading. */
+::view-transition-old(lang-toggle) {
+  display: none;
+}
+
+::view-transition-new(lang-toggle) {
+  animation: none;
+}
+
+@keyframes lang-out {
+  to {
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+@keyframes lang-in {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+/* Fallback for browsers without View Transitions */
+main,
+footer {
+  transition: opacity 0.18s ease;
+}
+
+.lang-switching main,
+.lang-switching footer {
+  opacity: 0;
+}
+
 /* ── Touch devices: no sticky hover lifts ───────────────────── */
 @media (hover: none) {
   .lift:hover,
